@@ -3,7 +3,7 @@ const userChoiceEl = document.getElementById('user-choice');
 const computerChoiceEl = document.getElementById('computer-choice');
 const outcomeEl = document.getElementById('outcome');
 
-// Fun responses based on outcome
+
 const funnyResponses = {
   win: [
     "You won! The computer is crying in the corner 😭",
@@ -22,7 +22,7 @@ const funnyResponses = {
   ]
 };
 
-// Add event listeners to each button
+
 choices.forEach(button => {
   button.addEventListener('click', () => {
     const userChoice = button.getAttribute('data-choice');
@@ -32,14 +32,14 @@ choices.forEach(button => {
   });
 });
 
-// Random computer choice
+
 function getComputerChoice() {
   const options = ['rock', 'paper', 'scissors'];
   const randomIndex = Math.floor(Math.random() * options.length);
   return options[randomIndex];
 }
 
-// Determine win/lose/draw
+
 function getResult(user, computer) {
   if (user === computer) return 'draw';
   if (
@@ -52,7 +52,7 @@ function getResult(user, computer) {
   return 'lose';
 }
 
-// Update the UI with results and a funny message
+
 function displayResult(user, computer, result) {
   const emojiMap = {
     rock: '🪨',
@@ -60,18 +60,16 @@ function displayResult(user, computer, result) {
     scissors: '✂️'
   };
 
-  userChoiceEl.textContent = `You chose: ${emojiMap[user]} ${capitalize(user)}`;
-  computerChoiceEl.textContent = `Computer chose: ${emojiMap[computer]} ${capitalize(computer)}`;
+  userChoiceEl.textContent = `You chose: ${emojiMap[user]} ${user}`;
+  computerChoiceEl.textContent = `Computer chose: ${emojiMap[computer]} ${computer}`;
   const phrase = getFunnyPhrase(result);
   outcomeEl.textContent = `Result: ${phrase}`;
 }
 
-// Capitalize first letter
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
 
-// Get a random funny phrase based on result
+
+
+
 function getFunnyPhrase(result) {
   const phrases = funnyResponses[result];
   return phrases[Math.floor(Math.random() * phrases.length)];
